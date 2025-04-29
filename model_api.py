@@ -7,7 +7,7 @@ from tensorflow.keras.models import load_model
 app = FastAPI()
 
 # Load your model
-model = load_model("Depression_dectection.keras")
+model = load_model("Depression_dectection.h5")
 
 # Define categorical feature order (must match training)
 categorical_feature_names = [

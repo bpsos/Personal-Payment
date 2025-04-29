@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Depression Detection Predictor</title>
+</head>
+<body>
+  <h1>Depression Detection</h1>
+
+  <form id="predictForm">
+    <h3>Numerical Inputs</h3>
+    <label>CGPA: <input type="number" step="0.01" id="CGPA" required></label><br>
+    <label>Academic Pressure: <input type="number" step="0.01" id="Academic_Pressure" required></label><br>
+    <label>Study Satisfaction: <input type="number" step="0.01" id="Study_Satisfaction" required></label><br>
+    <label>Work/Study Hours: <input type="number" step="0.01" id="Work_Study_Hours" required></label><br>
+    <label>Financial Stress: <input type="number" step="0.01" id="Financial_Stress" required></label><br>
+
+    <h3>Categorical Inputs (use encoded integers)</h3>
+    <label>Gender (e.g., 0 = Male, 1 = Female): <input type="number" id="Gender" required></label><br>
+    <label>City: <input type="number" id="City" required></label><br>
+    <label>Sleep Duration: <input type="number" id="Sleep_Duration" required></label><br>
+    <label>Dietary Habits: <input type="number" id="Dietary_Habits" required></label><br>
+    <label>Degree: <input type="number" id="Degree" required></label><br>
+    <label>Suicidal Thoughts: <input type="number" id="Suicidal_Thoughts" required></label><br>
+    <label>Family History: <input type="number" id="Family_History" required></label><br><br>
+
+    <button type="submit">Predict</button>
+  </form>
+
+  <h2 id="result"></h2>
+
+  <script>
+    const form = document.getElementById("predictForm");
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const payload = {
+        CGPA: parseFloat(document.getElementById("CGPA").value),
+        Academic_Pressure: parseFloat(document.getElementById("Academic_Pressure").value),
+        Study_Satisfaction: parseFloat(document.getElementById("Study_Satisfaction").value),
+        Work_Study_Hours: parseFloat(document.getElementById("Work_Study_Hours").value),
+        Financial_Stress: parseFloat(document.getElementById("Financial_Stress").value),
+        Gender: parseInt(document.getElementById("Gender").value),
+        City: parseInt(document.getElementById("City").value),
+        Sleep_Duration: parseInt(document.getElementById("Sleep_Duration").value),
+        Dietary_Habits: parseInt(document.getElementById("Dietary_Habits").value),
+        Degree: parseInt(document.getElementById("Degree").value),
+        Suicidal_Thoughts: parseInt(document.getElementById("Suicidal_Thoughts").value),
+        Family_History: parseInt(document.getElementById("Family_History").value)
+      };
+
+      try {
+        const response = await fetch("https://your-api-url.onrender.com/predict", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        document.getElementById("result").innerText =
+          `Predicted depression risk: ${(result.prediction * 100).toFixed(2)}%`;
+      } catch (error) {
+        document.getElementById("result").innerText = "Error contacting backend!";
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>

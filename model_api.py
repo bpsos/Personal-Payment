@@ -3,12 +3,20 @@ from pydantic import BaseModel
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import load_model
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
 # Load your model
 model = load_model("Depression_dectection.h5")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 👈 Use ["https://yourusername.github.io"] to restrict
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # Define categorical feature order (must match training)
 categorical_feature_names = [
     "Gender", "City", "Sleep Duration", "Dietary Habits",

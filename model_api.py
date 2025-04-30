@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 # Load your model
-model = load_model("Depression_dectection.keras")
+model = load_model("Depression_dectection.h5")
 
 app.add_middleware(
     CORSMiddleware,

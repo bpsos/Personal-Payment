@@ -17,27 +17,16 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-# Define categorical feature order (must match training)
-categorical_feature_names = [
-    "Gender", "City", "Sleep Duration", "Dietary Habits",
-    "Degree", "Have you ever had suicidal thoughts ?",
-    "Family History of Mental Illness"
-]
-
-numerical_feature_names = [
-    "CGPA", "Academic Pressure", "Study Satisfaction",
-    "Work/Study Hours", "Financial Stress"
-]
 
 class InputData(BaseModel):
-    # Adjust types according to your actual data
+    # Adjust types according to the JavaScript payload
+    Age: int
     CGPA: float
-    Academic_Pressure: float
-    Study_Satisfaction: float
-    Work_Study_Hours: float
-    Financial_Stress: float
+    Academic_Pressure: int
+    Study_Satisfaction: int
+    Work_Study_Hours: int
+    Financial_Stress: int
     Gender: int
-    City: int
     Sleep_Duration: int
     Dietary_Habits: int
     Degree: int
@@ -46,15 +35,12 @@ class InputData(BaseModel):
 
 @app.post("/predict")
 async def predict(data: InputData):
-    # Prepare numerical and categorical inputs
-    numerical_input = np.array([[
-        data.CGPA, data.Academic_Pressure, data.Study_Satisfaction,
-        data.Work_Study_Hours, data.Financial_Stress
-    ]])
+    # Prepare numerical and categorical inputs based on the payload
+    numerical_input = np.array([[data.Age, data.CGPA, data.Academic_Pressure, data.Study_Satisfaction,
+        data.Work_Study_Hours, data.Financial_Stress]])
 
     categorical_inputs = [
         np.array([[data.Gender]]),
-        np.array([[data.City]]),
         np.array([[data.Sleep_Duration]]),
         np.array([[data.Dietary_Habits]]),
         np.array([[data.Degree]]),

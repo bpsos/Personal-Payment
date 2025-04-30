@@ -846,12 +846,17 @@
                                         Academic Performance (CGPA)
                                         <span class="tooltip">
                                             <i class="fas fa-info-circle tooltip-icon"></i>
-                                            <span class="tooltip-text">Enter cumulative grade point average on a 4.0 scale</span>
+                                            <span class="tooltip-text">Enter cumulative grade point average on a 10.0 scale</span>
                                         </span>
                                     </label>
-                                    <input type="number" id="cgpa" class="input-field" min="0" max="4" step="0.1" value="2.9" required>
+                                    <input type="number" id="cgpa" class="input-field" min="5" max="10" step="0.1" value="5" required>
                                 </div>
-                                
+                                <div class="input-group">
+                                    <label for="age">Age</label>
+                                    <div class="range-container">
+                                        <input type="number" id="age" class="input-field" min="18" max="34" step="1" value="18" required>
+                                    </div>
+                                </div>
                                 <div class="input-group">
                                     <label for="gender">Gender</label>
                                     <select id="gender" class="input-field" required>
@@ -861,54 +866,72 @@
                                 </div>
                                 
                                 <div class="input-group">
-                                    <label for="degree">Academic Level</label>
+                                    <label for="degree">Academic Degree</label>
                                     <select id="degree" class="input-field" required>
-                                        <option value="0">Undergraduate</option>
-                                        <option value="1" selected>Graduate</option>
-                                        <option value="2">PhD</option>
+                                        <option value="0" selected>Class 12</option>
+                                        <option value="1">B.Arch</option>
+                                        <option value="2">B.Com</option>
+                                        <option value="3">B.Ed</option>
+                                        <option value="4">B.Pharm</option>
+                                        <option value="5">B.Tech</option>
+                                        <option value="6">BA</option>
+                                        <option value="7">BBA</option>
+                                        <option value="8">BCA</option>
+                                        <option value="9">BE</option>
+                                        <option value="10">BHM</option>
+                                        <option value="11">BSc</option>
+                                        <option value="12">LLB</option>
+                                        <option value="13">LLM</option>
+                                        <option value="14">M.Com</option>
+                                        <option value="15">M.Ed</option>
+                                        <option value="16">M.Pharm</option>
+                                        <option value="17">M.Tech</option>
+                                        <option value="18">MA</option>
+                                        <option value="19">MBA</option>
+                                        <option value="20">MBBS</option>
+                                        <option value="21">MCA</option>
+                                        <option value="22">MD</option>
+                                        <option value="23">ME</option>
+                                        <option value="24">MHM</option>
+                                        <option value="25">MSc</option>
+                                        <option value="26">Others</option>
+                                        <option value="27">PhD</option>
                                     </select>
                                 </div>
                                 
                                 <div class="input-group">
                                     <label for="academic_pressure">Academic Pressure</label>
-                                    <select id="academic_pressure" class="input-field" required>
-                                        <option value="0" selected>Low</option>
-                                        <option value="1">High</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="input-group">
-                                    <label for="city">Living Environment</label>
-                                    <select id="city" class="input-field" required>
-                                        <option value="0">Rural</option>
-                                        <option value="1" selected>Urban</option>
-                                    </select>
+                                    <div class="range-container">
+                                        <input type="number" id="academic_pressure" class="input-field" min="1" max="5" step="1" value="1" required>
+                                    </div>
                                 </div>
                                 
                                 <div class="input-group">
                                     <label for="family_history">Family History of Depression</label>
                                     <select id="family_history" class="input-field" required>
-                                        <option value="0">No history</option>
-                                        <option value="1" selected>Has history</option>
+                                        <option value="0">No</option>
+                                        <option value="1" selected>Yes</option>
                                     </select>
                                 </div>
                                 
                                 <div class="input-group">
                                     <label for="sleep_duration">Sleep Duration</label>
                                     <select id="sleep_duration" class="input-field" required>
-                                        <option value="0">Less than 4 hours</option>
-                                        <option value="1">4-6 hours</option>
-                                        <option value="2" selected>6-8 hours</option>
+                                        <option value="2">Less than 5 hours</option>
+                                        <option value="0">5-6 hours</option>
+                                        <option value="1" selected>7-8 hours</option>
                                         <option value="3">More than 8 hours</option>
+                                        <option value="4">Other</option>
                                     </select>
                                 </div>
                                 
                                 <div class="input-group">
                                     <label for="dietary_habits">Dietary Habits</label>
                                     <select id="dietary_habits" class="input-field" required>
-                                        <option value="0" selected>Poor</option>
-                                        <option value="1">Average</option>
-                                        <option value="2">Good</option>
+                                        <option value="3" selected>Unhealthy</option>
+                                        <option value="1">Moderate</option>
+                                        <option value="0">Healty</option>
+                                        <option value="2">Others</option>
                                     </select>
                                 </div>
                                 
@@ -930,7 +953,7 @@
                             <div class="input-group" style="margin-top: 20px;">
                                 <label for="study_satisfaction">Study Satisfaction</label>
                                 <div class="range-container">
-                                    <input type="range" id="study_satisfaction" class="range-slider" min="0" max="5" step="0.1" value="4.0">
+                                    <input type="range" id="study_satisfaction" class="range-slider" min="0" max="5" step="1" value="4.0">
                                     <div class="range-value" id="study_satisfaction_value">4.0</div>
                                 </div>
                             </div>
@@ -938,7 +961,7 @@
                             <div class="input-group">
                                 <label for="work_study_hours">Daily Work/Study Hours</label>
                                 <div class="range-container">
-                                    <input type="range" id="work_study_hours" class="range-slider" min="0" max="24" step="0.5" value="5.0">
+                                    <input type="range" id="work_study_hours" class="range-slider" min="0" max="12" step="1" value="5">
                                     <div class="range-value" id="work_study_hours_value">5.0</div>
                                 </div>
                             </div>
@@ -946,7 +969,7 @@
                             <div class="input-group">
                                 <label for="financial_stress">Financial Stress Level</label>
                                 <div class="range-container">
-                                    <input type="range" id="financial_stress" class="range-slider" min="0" max="5" step="0.1" value="3.0">
+                                    <input type="range" id="financial_stress" class="range-slider" min="0" max="5" step="1" value="3">
                                     <div class="range-value" id="financial_stress_value">3.0</div>
                                 </div>
                             </div>
@@ -1043,13 +1066,13 @@
             
             // Prepare input payload
             const payload = {
+                "Age": parseInt(document.getElementById('age').value),
                 "CGPA": parseFloat(document.getElementById('cgpa').value),
                 "Academic_Pressure": parseInt(document.getElementById('academic_pressure').value),
-                "Study_Satisfaction": parseFloat(document.getElementById('study_satisfaction').value),
-                "Work_Study_Hours": parseFloat(document.getElementById('work_study_hours').value),
-                "Financial_Stress": parseFloat(document.getElementById('financial_stress').value),
+                "Study_Satisfaction": parseInt(document.getElementById('study_satisfaction').value),
+                "Work_Study_Hours": parseInt(document.getElementById('work_study_hours').value),
+                "Financial_Stress": parseInt(document.getElementById('financial_stress').value),
                 "Gender": parseInt(document.getElementById('gender').value),
-                "City": parseInt(document.getElementById('city').value),
                 "Sleep_Duration": parseInt(document.getElementById('sleep_duration').value),
                 "Dietary_Habits": parseInt(document.getElementById('dietary_habits').value),
                 "Degree": parseInt(document.getElementById('degree').value),
@@ -1148,9 +1171,9 @@
                 {
                     name: 'Academic Performance',
                     value: input.CGPA,
-                    display: `${input.CGPA}/4.0`,
-                    risk: input.CGPA < 2.5 ? 'negative' : 'positive',
-                    threshold: 2.5
+                    display: `${input.CGPA}/10.0`,
+                    risk: input.CGPA < 7.5 ? 'negative' : 'positive',
+                    threshold: 7.5
                 },
                 {
                     name: 'Sleep Quality',
@@ -1278,13 +1301,13 @@
         
         // Helper functions for text display
         function getSleepDurationText(value) {
-            const sleepOptions = ['< 4 hours', '4-6 hours', '6-8 hours', '> 8 hours'];
+            const sleepOptions = ['Less than 5 hours', '5-6 hours', '7-8 hours', 'More than 8 hours'];
             return sleepOptions[value] || 'Unknown';
         }
         
         function getDietaryHabitsText(value) {
-            const dietOptions = ['Poor', 'Average', 'Good'];
-            return dietOptions[value] || 'Unknown';
+            const dietOptions = ['Unhealthy', 'Moderate', 'Healthy'];
+            return dietOptions[value] || 'Others';
         }
         
         // Share results functionality
